@@ -48,7 +48,7 @@ if file:
             # tess_text, tess_conf = udf_tess_text(tess_output)
             # paddle = PaddleOCR(use_angle_cls=True,use_gpu=False, lang='en')
             # reader = easyocr.Reader(['en'])
-            genai.configure(api_key="AIzaSyCo-j_zOU3NylZGvEHhnwYwEyGzVV8RMj0")
+            genai.configure(api_key="")
             gemini_model = genai.GenerativeModel(model_name='gemini-1.5-pro-exp-0801',generation_config=genai.GenerationConfig(temperature=0, top_p=1,top_k=0))
 
             # for image in image_paths:
