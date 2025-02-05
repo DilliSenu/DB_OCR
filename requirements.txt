@@ -2,6 +2,8 @@ streamlit
 pandas
 numpy
 pytesseract
+tesseract
+tesseract-ocr
 paddleocr
 paddlepaddle
 easyocr
