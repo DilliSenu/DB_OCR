@@ -5,8 +5,8 @@ import pytesseract
 # from paddleocr import PaddleOCR
 from pytesseract import Output
 from process_file import *
-import cv2
-import google.generativeai as genai
+# import cv2
+# import google.generativeai as genai
 
 st.header("DB - OCR's")
 st.text("Upload an image to extract text")
