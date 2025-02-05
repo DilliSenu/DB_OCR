@@ -8,3 +8,4 @@ paddlepaddle
 easyocr
 pdf2image
 opencv-python
+google-generativeai
