@@ -1,0 +1,8 @@
+streamlit
+pandas
+numpy
+pytesseract
+paddleocr
+paddlepaddle
+easyocr
+pdf2image
