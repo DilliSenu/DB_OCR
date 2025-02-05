@@ -6,3 +6,4 @@ paddleocr
 paddlepaddle
 easyocr
 pdf2image
+opencv-python
