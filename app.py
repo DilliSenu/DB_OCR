@@ -1,8 +1,8 @@
 import streamlit as st
 from PIL import Image
 import pytesseract
-import easyocr
-from paddleocr import PaddleOCR
+# import easyocr
+# from paddleocr import PaddleOCR
 from pytesseract import Output
 from process_file import *
 import cv2
@@ -46,29 +46,29 @@ if file:
         with st.status("Extracting Text"):
             tess_output = pytesseract.image_to_data(image=image,output_type=Output.DICT)
             tess_text, tess_conf = udf_tess_text(tess_output)
-            paddle = PaddleOCR(use_angle_cls=True,use_gpu=False, lang='en')
-            reader = easyocr.Reader(['en'])
+            # paddle = PaddleOCR(use_angle_cls=True,use_gpu=False, lang='en')
+            # reader = easyocr.Reader(['en'])
             # genai.configure(api_key="AIzaSyCo-j_zOU3NylZGvEHhnwYwEyGzVV8RMj0")
             # gemini_model = genai.GenerativeModel(model_name='gemini-1.5-pro-exp-0801',generation_config=genai.GenerationConfig(temperature=0, top_p=1,top_k=0))
 
-            for image in image_paths:
-                input_image = cv2.imread(image)
-                paddle_result = paddle.ocr(input_image)
-                easy_result = reader.readtext(input_image)
-                sample_file = genai.upload_file(path = image)
-                try:
-                    paddle_text = "\n".join([line[1][0] for line in paddle_result[0]])
-                except Exception as e: 
-                    print("e")
-                    paddle_text=""
-                try:              
-                    easy_text = "\n".join([text[1] for text in easy_result])
-                    confidence_scores = [float(text[2]) for text in easy_result if text[1] is not None]
-                    average_confidence = round((sum(confidence_scores) / len(confidence_scores) if confidence_scores else 0)*100)
+            # for image in image_paths:
+            #     input_image = cv2.imread(image)
+                # paddle_result = paddle.ocr(input_image)
+                # easy_result = reader.readtext(input_image)
+                # sample_file = genai.upload_file(path = image)
+                # try:
+                #     paddle_text = "\n".join([line[1][0] for line in paddle_result[0]])
+                # except Exception as e: 
+                #     print("e")
+                #     paddle_text=""
+                # try:              
+                #     easy_text = "\n".join([text[1] for text in easy_result])
+                #     confidence_scores = [float(text[2]) for text in easy_result if text[1] is not None]
+                #     average_confidence = round((sum(confidence_scores) / len(confidence_scores) if confidence_scores else 0)*100)
 
-                except Exception as e:
-                    print(e)
-                    easy_text=""
+                # except Exception as e:
+                #     print(e)
+                #     easy_text=""
 
         c0,c00,c000 = st.columns([0.2,0.8,0.2])
         c1,c2,conf1 = st.columns([0.2,0.8,0.2])
@@ -82,12 +82,12 @@ if file:
             c1.text("Tesseract")
             c2.write(tess_text)
             conf1.write(tess_conf)
-            c3.text("Paddle")
-            c4.write(paddle_text)
-            conf2.write("NA")
-            c5.text("Easy OCR")
-            c6.write(easy_text)
-            conf3.write(average_confidence)
+            # c3.text("Paddle")
+            # c4.write(paddle_text)
+            # conf2.write("NA")
+            # c5.text("Easy OCR")
+            # c6.write(easy_text)
+            # conf3.write(average_confidence)
         st.text("Extraction Completed")
 
         # response = gemini_model.generate_content([sample_file,"""Do OCR for the input document."""])
